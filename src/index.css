@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #F7F5F2;
+    color: #111111;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #F7F5F2; }
+  ::-webkit-scrollbar-thumb { background: #123524; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #1e5440; }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 xl:px-28;
+  }
+
+  /* Primary CTA — forest green bg, white text */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-[#123524] hover:bg-[#1e5440]
+           text-white font-semibold px-7 py-3.5 rounded-sm 
+           transition-all duration-300 text-sm tracking-wide;
+  }
+
+  /* Outline CTA — for use on dark forest backgrounds */
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-white/30 hover:border-[#DDE7E1] 
+           hover:text-[#DDE7E1] text-white font-medium px-7 py-3.5 rounded-sm 
+           transition-all duration-300 text-sm tracking-wide;
+  }
+
+  /* Outline CTA — for use on light/ivory backgrounds */
+  .btn-outline-dark {
+    @apply inline-flex items-center gap-2 border border-[#E7E3DD] hover:border-[#123524] 
+           hover:text-[#123524] text-[#111111] font-medium px-7 py-3.5 rounded-sm 
+           transition-all duration-300 text-sm tracking-wide;
+  }
+
+  .heading-display {
+    @apply font-display font-semibold leading-tight tracking-tight;
+  }
+
+  /* Section label — on light (ivory/white) background */
+  .section-label {
+    @apply text-[#123524] font-semibold text-xs tracking-[0.2em] uppercase;
+  }
+
+  /* Section label — on dark (forest green) background */
+  .section-label-light {
+    @apply text-[#DDE7E1] font-semibold text-xs tracking-[0.2em] uppercase;
+  }
+
+  /* Accent line — on light backgrounds */
+  .accent-line {
+    @apply block w-12 h-0.5 bg-[#123524] mt-4;
+  }
+
+  /* Accent line — on dark backgrounds */
+  .accent-line-light {
+    @apply block w-12 h-0.5 bg-[#DDE7E1] mt-4;
+  }
+
+  /* Legacy alias */
+  .gold-line { @apply accent-line; }
+
+  .card-base {
+    @apply bg-white rounded-sm border border-[#E7E3DD] shadow-card 
+           hover:shadow-card-hover transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .clip-hero { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+}
