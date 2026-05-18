@@ -5,6 +5,7 @@ RewriteBase /
 # Serve existing files and directories directly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/index\.html
 
 # Route everything else to index.html for React Router
-RewriteRule ^ index.html [L]
+RewriteRule ^ /index.html [L]
