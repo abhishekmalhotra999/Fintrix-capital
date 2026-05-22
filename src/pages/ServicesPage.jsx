@@ -83,12 +83,12 @@ export default function ServicesPage() {
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </button>
             <a
-              href="tel:1300346874"
+              href="tel:0450122670"
               className="inline-flex items-center gap-2.5 border border-white/25 hover:border-[#DDE7E1]/60
                          text-white/85 hover:text-[#DDE7E1] font-medium px-8 py-4 rounded-sm
                          transition-all duration-300 text-sm tracking-wide"
             >
-              1300 FIN CASH
+              0450 122 670
             </a>
           </motion.div>
         </div>

@@ -6,9 +6,9 @@ import Contact from '../components/sections/Contact'
 const ease = [0.22, 1, 0.36, 1]
 
 const contactItems = [
-  { icon: Phone, label: 'Phone', value: '1300 FIN CASH', href: 'tel:1300346874' },
-  { icon: Mail, label: 'Email', value: 'info@fintrixcapital.com.au', href: 'mailto:info@fintrixcapital.com.au' },
-  { icon: MapPin, label: 'Office', value: 'Melbourne, VIC, Australia', href: null },
+  { icon: Phone, label: 'Mobile', value: '0450 122 670', href: 'tel:0450122670' },
+  { icon: Mail, label: 'Email', value: 'anu@fintrixcapital.com.au', href: 'mailto:anu@fintrixcapital.com.au' },
+  { icon: MapPin, label: 'Office', value: 'Clyde North VIC 3978', href: null },
   { icon: Clock, label: 'Hours', value: 'Mon – Fri  ·  8:30am – 5:30pm AEST', href: null },
 ]
 

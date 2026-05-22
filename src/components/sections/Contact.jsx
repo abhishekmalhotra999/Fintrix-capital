@@ -25,9 +25,9 @@ const financeOptions = [
 ]
 
 const contactItems = [
-  { icon: Phone, label: 'Phone', value: '1300 FIN CASH', href: 'tel:1300346227' },
-  { icon: Mail, label: 'Email', value: 'info@fintrixcapital.com.au', href: 'mailto:info@fintrixcapital.com.au' },
-  { icon: MapPin, label: 'Office', value: 'Melbourne, VIC, Australia', href: null },
+  { icon: Phone, label: 'Mobile', value: '0450 122 670', href: 'tel:0450122670' },
+  { icon: Mail, label: 'Email', value: 'anu@fintrixcapital.com.au', href: 'mailto:anu@fintrixcapital.com.au' },
+  { icon: MapPin, label: 'Office', value: 'Clyde North VIC 3978', href: null },
   { icon: Clock, label: 'Hours', value: 'Mon – Fri  ·  8:30am – 5:30pm AEST', href: null },
 ]
 
@@ -46,18 +46,81 @@ const inputCls =
 
 const labelCls = 'block text-[#111111] text-[10px] font-semibold tracking-[0.15em] uppercase mb-2'
 
+const RECIPIENTS = ['anu@fintrixcapital.com.au', 'webies99@gmail.com']
+
+function buildHtml(data) {
+  const row = (label, value) =>
+    `<tr>
+      <td style="padding:10px 14px;border-bottom:1px solid #eee;font-weight:bold;width:170px;color:#333;vertical-align:top">${label}</td>
+      <td style="padding:10px 14px;border-bottom:1px solid #eee;color:#555">${value || '—'}</td>
+    </tr>`
+
+  return `<div style="font-family:sans-serif;max-width:600px;margin:auto">
+  <div style="background:#0c2419;padding:24px 28px;border-radius:4px 4px 0 0">
+    <h2 style="color:#fff;margin:0;font-size:20px">New Finance Enquiry — Fintrix Capital</h2>
+  </div>
+  <table style="width:100%;border-collapse:collapse;border:1px solid #eee;border-top:none">
+    ${row('Full Name', data.name)}
+    ${row('Email', data.email)}
+    ${row('Phone', data.phone)}
+    ${row('Business Type', data.businessType)}
+    ${row('Finance Required', data.financeRequired)}
+    ${row('Message', data.message)}
+  </table>
+  <p style="margin-top:20px;font-size:11px;color:#aaa">Submitted via fintrixcapital.com.au contact form</p>
+</div>`
+}
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', businessType: '', financeRequired: '', message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const handleChange = (e) =>
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError(null)
+
+    try {
+      const res = await fetch(
+        'https://service.abhishekmalhotra.in/smtp-service/fintrix-capital',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': import.meta.env.VITE_SMTP_API_KEY,
+          },
+          body: JSON.stringify({
+            to: RECIPIENTS,
+            subject: `New Finance Enquiry – ${formData.name} (${formData.financeRequired})`,
+            replyTo: formData.email,
+            html: buildHtml(formData),
+          }),
+        }
+      )
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(
+          data?.errors?.[0]?.msg ||
+          (res.status === 429 ? 'Too many requests — please try again in a minute.' :
+           res.status === 401 ? 'Configuration error. Please contact us directly.' :
+           `Submission failed (${res.status}). Please try again.`)
+        )
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again or call us directly.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -252,14 +315,23 @@ export default function Contact() {
                   />
                 </div>
 
+                {/* Error message */}
+                {error && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-sm leading-relaxed">
+                    {error}
+                  </div>
+                )}
+
                 {/* Submit */}
                 <button
                   type="submit"
+                  disabled={loading}
                   className="group w-full flex items-center justify-center gap-2.5 bg-[#123524] hover:bg-[#1e5440]
+                             disabled:opacity-60 disabled:cursor-not-allowed
                              text-white font-semibold text-sm px-7 py-4 rounded-sm transition-all duration-300 tracking-wide mt-2"
                 >
-                  Submit Enquiry
-                  <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
+                  {loading ? 'Sending…' : 'Submit Enquiry'}
+                  {!loading && <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />}
                 </button>
 
                 <p className="text-[#5F6368]/60 text-[11px] text-center leading-relaxed pt-1">

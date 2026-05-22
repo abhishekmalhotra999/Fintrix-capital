@@ -52,7 +52,7 @@ export default function Footer() {
 
           <div className="flex flex-col gap-5 lg:items-end shrink-0">
             <a
-              href="tel:1300346227"
+              href="tel:0450122670"
               className="group flex items-center gap-4"
             >
               <div className="lg:text-right">
@@ -61,7 +61,7 @@ export default function Footer() {
                   className="font-display font-bold text-white group-hover:text-[#DDE7E1] transition-colors duration-200"
                   style={{ fontSize: 'clamp(22px, 3vw, 36px)' }}
                 >
-                  1300 FIN CASH
+                  0450 122 670
                 </div>
               </div>
               <div className="w-11 h-11 border border-white/15 rounded-sm flex items-center justify-center shrink-0 group-hover:border-[#DDE7E1]/50 transition-all duration-200">
@@ -69,10 +69,10 @@ export default function Footer() {
               </div>
             </a>
             <a
-              href="mailto:info@fintrixcapital.com.au"
+              href="mailto:anu@fintrixcapital.com.au"
               className="text-white/30 hover:text-[#DDE7E1] text-sm transition-colors duration-200"
             >
-              info@fintrixcapital.com.au
+              anu@fintrixcapital.com.au
             </a>
           </div>
         </div>
@@ -140,10 +140,10 @@ export default function Footer() {
           <h4 className="text-white/28 text-[9px] tracking-[0.28em] uppercase font-medium mb-5">Contact</h4>
           <ul className="space-y-5">
             {[
-              { label: 'Email', val: 'info@fintrixcapital.com.au', href: 'mailto:info@fintrixcapital.com.au' },
-              { label: 'Phone', val: '1300 FIN CASH', href: 'tel:1300346227' },
+              { label: 'Email', val: 'anu@fintrixcapital.com.au', href: 'mailto:anu@fintrixcapital.com.au' },
+              { label: 'Mobile', val: '0450 122 670', href: 'tel:0450122670' },
               { label: 'Office Hours', val: 'Mon – Fri: 8:30am – 5:30pm AEST', href: null },
-              { label: 'Location', val: 'Melbourne, Australia', href: null },
+              { label: 'Location', val: 'Clyde North VIC 3978', href: null },
             ].map(({ label, val, href }) => (
               <li key={label}>
                 <span className="block text-white/22 text-[9px] uppercase tracking-[0.22em] mb-1">{label}</span>
