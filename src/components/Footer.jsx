@@ -84,7 +84,7 @@ export default function Footer() {
         {/* Logo col */}
         <div className="lg:col-span-4 lg:pr-16">
           <img
-            src="/logo-fin.png"
+            src="/fintrix-final-logo.png"
             alt="Fintrix Capital"
             className="h-9 w-auto object-contain mb-6"
             style={{ filter: 'brightness(0) invert(1)' }}
@@ -174,7 +174,7 @@ export default function Footer() {
       <div className="border-t border-white/[0.07]">
         <div className="section-padding max-w-screen-2xl mx-auto py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-[11px] leading-relaxed">
-            © {new Date().getFullYear()} Fintrix Capital Pty Ltd. All rights reserved. ABN 00 000 000 000. Australian Credit Licence 000000.
+            © {new Date().getFullYear()} Fintrix Capital Pty Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             {['Privacy Policy', 'Terms of Use', 'Disclaimer'].map((link) => (

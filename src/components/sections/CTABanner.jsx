@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
-import { ArrowRight, Phone } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 function CountUp({ to, prefix = '', suffix = '', decimals = 0, comma = false }) {
   const ref = useRef(null)
@@ -109,15 +109,7 @@ export default function CTABanner() {
                 Apply Now
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button
-                onClick={() => handleNav('#contact')}
-                className="group inline-flex items-center gap-2 border border-[#E7E3DD] hover:border-[#123524]
-                           text-graphite hover:text-[#123524] font-medium px-7 py-4 rounded-sm
-                           transition-all duration-300 text-sm tracking-wide"
-              >
-                <Phone size={14} />
-                Call 1300 FIN CASH
-              </button>
+
             </motion.div>
 
             {/* Trust pills */}

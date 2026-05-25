@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Phone, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 
@@ -85,16 +85,8 @@ export default function Navbar() {
         <div className="section-padding max-w-screen-2xl mx-auto flex items-center justify-between h-full">
           <div className="flex items-center gap-4">
             <a
-              href="tel:1300346874"
-              className="flex items-center gap-1.5 text-[#DDE7E1]/50 hover:text-[#DDE7E1] text-[10px] tracking-wide transition-colors duration-200"
-            >
-              <Phone size={10} />
-              1300 FIN CASH
-            </a>
-            <span className="w-px h-3 bg-white/8" />
-            <a
               href="mailto:info@fintrixcapital.com.au"
-              className="hidden sm:block text-[#DDE7E1]/50 hover:text-[#DDE7E1] text-[10px] tracking-wide transition-colors duration-200"
+              className="text-[#DDE7E1]/50 hover:text-[#DDE7E1] text-[10px] tracking-wide transition-colors duration-200"
             >
               info@fintrixcapital.com.au
             </a>
@@ -149,7 +141,7 @@ export default function Navbar() {
             transition={{ duration: 0.7, delay: 0.2, ease }}
           >
             <img
-              src="/logo-fin.png"
+              src="/fintrix-final-logo.png"
               alt="Fintrix Capital"
               className="h-9 w-auto object-contain transition-all duration-300 group-hover:opacity-70"
               style={{ filter: 'brightness(0) invert(1)' }}
@@ -214,21 +206,6 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease }}
           >
-            {/* Phone with live pulsing indicator */}
-            <a
-              href="tel:1300346874"
-              className="flex items-center gap-2 text-white/45 hover:text-[#DDE7E1] text-[12px] font-medium
-                         transition-colors duration-200 tracking-wide"
-            >
-              <span className="relative flex h-2 w-2 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#DDE7E1]/35" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#DDE7E1]/55" />
-              </span>
-              1300 FIN CASH
-            </a>
-
-            <div className="w-px h-5 bg-white/12" />
-
             {/* CTA button with sweep-shine on hover */}
             <button
               onClick={() => handleNav('#contact', '/contact')}
@@ -309,15 +286,7 @@ export default function Navbar() {
                 >
                   Apply Now
                 </button>
-                <a
-                  href="tel:1300346874"
-                  className="inline-flex items-center justify-center gap-2 border border-white/15
-                             hover:border-[#DDE7E1]/40 hover:text-[#DDE7E1] text-white/60
-                             py-3.5 rounded-sm text-sm transition-all duration-300"
-                >
-                  <Phone size={14} />
-                  1300 FIN CASH
-                </a>
+
               </div>
             </nav>
           </motion.div>
